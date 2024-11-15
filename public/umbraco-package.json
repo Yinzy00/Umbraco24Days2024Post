@@ -1,0 +1,15 @@
+{
+    "$schema": "..\\..\\MySite.Umbraco\\umbraco-package-schema.json",
+    "name": "MySite",
+    "id": "MySite",
+    "version": "1.0.0",
+    "allowTelemetry": true,
+    "extensions": [
+        {
+            "name": "MySite.entrypoint",
+            "alias": "MySite.EntryPoint",
+            "type": "entryPoint",
+            "js": "/app_plugins/BackofficeExtension/mysite-backofficeextension.js"
+        }
+    ]
+}
