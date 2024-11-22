@@ -19,7 +19,7 @@ export class PokedexSectionView extends UmbLitElement {
             component: () => import('./routes/generalInfo'),
             setup: (component, info) => {
                 const element = component as GeneralInfo;
-                element.idProp = info.match.params.id;
+                element.idProp = parseInt(info.match.params.id);
             }
         },
         {
@@ -35,7 +35,7 @@ export class PokedexSectionView extends UmbLitElement {
             component: () => import('./routes/moves'),
             setup: (component, info) => {
                 const element = component as Moves;
-                element.idProp = info.match.params.id;
+                element.idProp = parseInt(info.match.params.id);
             }
         },
         {

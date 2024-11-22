@@ -15,6 +15,8 @@ class PokedexMenuItems extends UmbLitElement implements UmbMenuItemElement {
     private _loading: boolean = true; // Track loading state
     @state()
     private _error: string | null = null; // Track any errors
+    @state()
+    private _active: number = -1; // Track active item
 
     constructor() {
         super();
@@ -37,7 +39,7 @@ class PokedexMenuItems extends UmbLitElement implements UmbMenuItemElement {
     renderItems(items: Pokemon[]): TemplateResult {
         return html`
             ${items.map(element => html`
-                <uui-menu-item label="${element.name}">
+                <uui-menu-item ?active=${this._active === element.id} href="/section/pokedex/view/pokemon/general-info/${element.id}" label="${element.name}" @click=${() => this._active = element.id}>
                 </uui-menu-item>
             `)}
         `;

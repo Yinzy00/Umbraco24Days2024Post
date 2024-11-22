@@ -1,4 +1,5 @@
 import { Pokemon } from "./models/pokemon";
+import { PokemonDetail } from "./models/pokemonDetail";
 import { PokemonResponse } from "./models/pokemonResponse";
 
 export class PokemonService {
@@ -25,6 +26,17 @@ export class PokemonService {
                 p.id = parseInt(id);
             }
         });
+
+        return pokemon;
+    }
+
+    public static async GetPokemonById(id: number): Promise<PokemonDetail> {
+        let response = await fetch(`${this.baseUrl}/${id}`);
+
+        if (!response.ok)
+            throw new Error('Network response was not ok');
+
+        let pokemon: PokemonDetail = await response.json();
 
         return pokemon;
     }

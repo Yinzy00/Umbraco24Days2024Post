@@ -9,7 +9,7 @@ export class Stats extends UmbLitElement{
     public idProp!: string;
 
     protected render = () => {
-        return html`<div>Section Root... We could render some information here.</div>`;
+        return html`<div>Stats for element ${this.idProp}.</div>`;
     }
 }
 

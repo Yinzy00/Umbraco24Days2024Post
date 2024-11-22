@@ -1,9 +1,10 @@
-import { ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp } from '@umbraco-cms/backoffice/extension-registry';
+import { ManifestEntityAction, ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp } from '@umbraco-cms/backoffice/extension-registry';
 import { SECTION_ALAIS } from '../manifest.ts';
 
 const SIDEBARAPP_ALIAS = 'MySite.PokedexSidebarApp';
 const MENU_ALIAS = 'MySite.PokedexMenu';
 const MENUITEM_ALIAS = 'MySite.PokedexMenuItems';
+const POKEMON_ENTITY_TYPE = 'MySite.PokemonEntity';
 
 const sidebarAppManifest: ManifestSectionSidebarApp =
 {
@@ -27,7 +28,7 @@ const menuManifest: ManifestMenu =
 {
     type: 'menu',
     alias: MENU_ALIAS,
-    name: 'Pokedex Menu',
+    name: 'Pokedex Menu'
 };
 
 const menuItemManifest: ManifestMenuItem = {
@@ -41,6 +42,21 @@ const menuItemManifest: ManifestMenuItem = {
     },
     element: () => import('./menu-items.ts')
 };
+
+const entityActionManifests : Array<ManifestEntityAction> = [
+    {
+        type: 'entityAction',
+        alias: 'showStats',
+        name: 'Show Stats',
+        kind: 'default',
+        api: () => import('./menu-actions/folder/delete-folder-action.api.ts'),
+        forEntityTypes: [POKEMON_ENTITY_TYPE],
+        meta: {
+            icon: 'icon-trash',
+            label: 'Delete'
+        },
+    },
+]
 
 
 export const menuManifests = [sidebarAppManifest, menuManifest, menuItemManifest];
