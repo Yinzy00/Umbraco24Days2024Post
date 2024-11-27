@@ -4,7 +4,7 @@ import { SECTION_ALAIS } from '../manifest.ts';
 const SIDEBARAPP_ALIAS = 'MySite.PokedexSidebarApp';
 const MENU_ALIAS = 'MySite.PokedexMenu';
 const MENUITEM_ALIAS = 'MySite.PokedexMenuItems';
-const POKEMON_ENTITY_TYPE = 'MySite.PokemonEntity';
+export const POKEMON_ENTITY_TYPE = 'MySite.PokemonEntity';
 
 const sidebarAppManifest: ManifestSectionSidebarApp =
 {
@@ -46,17 +46,17 @@ const menuItemManifest: ManifestMenuItem = {
 const entityActionManifests : Array<ManifestEntityAction> = [
     {
         type: 'entityAction',
-        alias: 'showStats',
-        name: 'Show Stats',
+        alias: 'showMoves',
+        name: 'Show Moves',
         kind: 'default',
-        api: () => import('./menu-actions/folder/delete-folder-action.api.ts'),
+        api: () => import('./entityActions/show-moves.api.ts'),
         forEntityTypes: [POKEMON_ENTITY_TYPE],
         meta: {
-            icon: 'icon-trash',
+            icon: 'icon-bird',
             label: 'Delete'
         },
     },
 ]
 
 
-export const menuManifests = [sidebarAppManifest, menuManifest, menuItemManifest];
+export const menuManifests = [sidebarAppManifest, menuManifest, menuItemManifest, ...entityActionManifests];

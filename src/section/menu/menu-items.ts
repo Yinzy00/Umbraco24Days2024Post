@@ -4,6 +4,7 @@ import { html, TemplateResult } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { Pokemon } from '../../api/pokemon/models/pokemon';
 import { PokemonService } from '../../api/pokemon/pokemonService';
+import { POKEMON_ENTITY_TYPE } from './menifest';
 
 const elementName = 'pokedex-menu-items';
 
@@ -39,7 +40,15 @@ class PokedexMenuItems extends UmbLitElement implements UmbMenuItemElement {
     renderItems(items: Pokemon[]): TemplateResult {
         return html`
             ${items.map(element => html`
-                <uui-menu-item ?active=${this._active === element.id} href="/section/pokedex/view/pokemon/general-info/${element.id}" label="${element.name}" @click=${() => this._active = element.id}>
+                <uui-menu-item ?active=${this._active === element.id} 
+                href="/section/pokedex/view/pokemon/general-info/${element.id}" 
+                label="${element.name}" @click=${() => this._active = element.id}>
+                <umb-entity-actions-bundle
+						slot="actions"
+						.entityType=${POKEMON_ENTITY_TYPE}
+						.unique=${element.id}
+						.label=${"label"}>
+					</umb-entity-actions-bundle>
                 </uui-menu-item>
             `)}
         `;
