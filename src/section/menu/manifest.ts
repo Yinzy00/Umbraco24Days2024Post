@@ -1,5 +1,6 @@
-import { ManifestEntityAction, ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp } from '@umbraco-cms/backoffice/extension-registry';
+import { ManifestEntityAction, ManifestMenu, ManifestMenuItem, ManifestModal, ManifestSectionSidebarApp  } from '@umbraco-cms/backoffice/extension-registry';
 import { SECTION_ALAIS } from '../manifest.ts';
+import { STATS_MODAL_ALIAS } from './stats-modal/status-modal.token.ts';
 
 const SIDEBARAPP_ALIAS = 'MySite.PokedexSidebarApp';
 const MENU_ALIAS = 'MySite.PokedexMenu';
@@ -43,7 +44,7 @@ const menuItemManifest: ManifestMenuItem = {
     element: () => import('./menu-items.ts')
 };
 
-const entityActionManifests : Array<ManifestEntityAction> = [
+const entityActionManifests: Array<ManifestEntityAction> = [
     {
         type: 'entityAction',
         alias: 'showMoves',
@@ -53,10 +54,30 @@ const entityActionManifests : Array<ManifestEntityAction> = [
         forEntityTypes: [POKEMON_ENTITY_TYPE],
         meta: {
             icon: 'icon-bird',
-            label: 'Delete'
+            label: 'Moves'
         },
     },
-]
+    {
+        type: 'entityAction',
+        alias: 'showStats',
+        name: 'Show Stats',
+        kind: 'default',
+        api: () => import('./entityActions/show-stats.api.ts'),
+        forEntityTypes: [POKEMON_ENTITY_TYPE],
+        meta: {
+            icon: 'icon-pulse',
+            label: 'Stats'
+        },
+    }
+];
 
+const modalManifests: Array<ManifestModal> = [
+    {
+        type: 'modal',
+        alias: STATS_MODAL_ALIAS,
+        name: 'Stats Modal',
+        element: () => import('./stats-modal/stats-modal.element.ts'),
+    }
+];
 
-export const menuManifests = [sidebarAppManifest, menuManifest, menuItemManifest, ...entityActionManifests];
+export const menuManifests = [sidebarAppManifest, menuManifest, menuItemManifest, ...entityActionManifests, ...modalManifests];

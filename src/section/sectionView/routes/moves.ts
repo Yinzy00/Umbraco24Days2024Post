@@ -23,19 +23,19 @@ export class Moves extends UmbLitElement {
     }
 
     protected render = () => {
-        return html`<div>
-            ${this._detail
+        return this._detail && html`<div>
+        ${this._detail
                 ? html`<uui-box headline=${this._detail.name}>
-                <div>
-                    <img src=${this._detail.sprites.front_default} alt=${this._detail.name} />
-                </div>
-                <h2>Moves</h2>
-                    <ul>
-                        ${this._detail.moves.map(x => html`<li>
-                            <b>${x.move.name}</b>
-                        </li>`)}
-                    </ul>
-                </uui-box>`
+            <div>
+                <img src=${this._detail.sprites.front_default} alt=${this._detail.name} />
+            </div>
+            <h2>Moves</h2>
+                <ul>
+                    ${this._detail.moves.map(x => html`<li>
+                        <b>${x.move.name}</b>
+                    </li>`)}
+                </ul>
+            </uui-box>`
                 : null}
         </div>`;
     }

@@ -3,8 +3,6 @@ import { ManifestEntityActionDefaultKind } from "@umbraco-cms/backoffice/extensi
 
 export class ShowMoves extends UmbEntityActionBase<ManifestEntityActionDefaultKind> {
     override async execute() {
-        console.log('Delete form with id:', this.args.unique);
-
         if (this.args.unique == null)
             throw new Error('Unique is required to delete form');
 

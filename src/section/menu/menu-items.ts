@@ -4,7 +4,7 @@ import { html, TemplateResult } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { Pokemon } from '../../api/pokemon/models/pokemon';
 import { PokemonService } from '../../api/pokemon/pokemonService';
-import { POKEMON_ENTITY_TYPE } from './menifest';
+import { POKEMON_ENTITY_TYPE } from './manifest';
 
 const elementName = 'pokedex-menu-items';
 

@@ -2,7 +2,7 @@ import { UmbEntryPointOnInit } from '@umbraco-cms/backoffice/extension-api';
 import { ManifestTypes } from '@umbraco-cms/backoffice/extension-registry';
 import { DashboardManifest } from './dashboard/manifest';
 import { SectionManifest } from './section/manifest';
-import { menuManifests } from './section/menu/menifest';
+import { menuManifests } from './section/menu/manifest';
 import { sectionViewManifest } from './section/sectionView/manifest';
 
 const manifests: Array<ManifestTypes> = [
